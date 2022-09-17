@@ -1,6 +1,16 @@
 n1=input()
+symbs=['.', '-']
+for i in range(10):
+    symbs.append(str(i))
+
+if any(x.isdigit for x in n1):
+    print('y')
+else:
+    print('n')
+
+
 def ch1(n1):
-    if n1.isdigit() or  type(n1) == float:
+    if all([x in symbs for x in n1]):
         print('Введите второй элемент:')
         return float(n1)
     else:
@@ -8,18 +18,6 @@ def ch1(n1):
 введите первый элемент:')
         n1 = input()
         return ch1(n1)
-# a=0.5383826
-# if not type(a)==float:
-#     print('no numb')
-# else:
-#     print(a)
-# def ch1(n1):
-#     if not n1.isdigit():
-#         print('Введенный элемент не является числом,\
-# введите первый элемент:')
-#         n1 = input()
-#         return ch1(n1)
-#     else:
-#         print('Введите второй элемент:')
-#         return float(n1)
 print(ch1(n1))
+
+
