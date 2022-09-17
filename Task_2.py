@@ -3,9 +3,9 @@ funcs = ['Сложение', 'Вычитание', "Умножение", "Дел
          "Логарифм", "Округление в большую сторону до N знака после запятой", \
          "Округление в меньшую сторону до N знака после запятой"]
 
-s = 'Введите необходимую функцию: 1.Сложение\n2.Вычитание\n3.Умножение\n4.Деление\n\
+s = 'Введите номер функции:\n1.Сложение\n2.Вычитание\n3.Умножение\n4.Деление\n\
 5.Возведение в степень\n6.Логарифм\n7.Округление в большую сторону до N знака после запятой\
-\n8.Округление в меньшую сторону до N знака после запятой.'
+\n8.Округление в меньшую сторону до N знака после запятой'
 print(s)
 f, n1, n2 = input(), 0, 0
 
@@ -38,37 +38,40 @@ import math
 
 
 def check(f, n1, n2):
-    if str(f) not in funcs:
-        print('Такой функции не существует.', s)
+    if f not in [str(i) for i in range(9)]:
+        print('Такой функции нет.', s)
         f = input()
         return check(f, n1, n2)
     else:
         print('Введите первый элемент:')
         n1 = input()
         a, b = ch1(n1), ch2(n2)
-        if f == funcs[0]:
+        if f == '1':
             return a + b
-        elif f == funcs[1]:
+        elif f == '2':
             return a - b
-        elif f == funcs[2]:
+        elif f == '3':
             return a * b
-        elif f == funcs[3]:
-            return a / b
-        elif f == funcs[4]:
+        elif f == '4':
+            if b!=0:return a / b
+            else:return 'Ошибка'
+        elif f == '5':
             return a ** b
-        elif f == funcs[5]:
+        elif f == '6':
             return math.log(a, b)
-        elif f == funcs[6]:
+        elif f == '7':
             n = ''
             if b + 2 < len(str(a)):
                 num = list(str(a)[:int(b) + 2])
                 num[-1] = str(int(num[-1]) + 1)
                 for i in range(len(num)): n += num[i]
                 return n
-            else:
+            elif b + 2 == len(str(a)):
                 return a
-        elif f == funcs[7]:
-            return str(a)[:int(b)+2]
+            else:return 'Ошибка'
+        elif f == '8':
+            if b + 2 <= len(str(a)):return str(a)[:int(b)+2]
+            else:return "Ошибка"
 
 
 print(check(f, n1, n2))
